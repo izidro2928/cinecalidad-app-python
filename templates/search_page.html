@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row row row-cols-2 row-cols-md-4 row-cols-lg-5 gy-3">
+            {% for movie in movies %}
+                <div class="col">
+                    <img src="{{ movie.poster }}" alt="{{ movie.title }}" class="img-fluid rounded">
+                    <h3 class="text-truncate h5">{{ movie.title }}</h3>
+                    <div class="d-flex justify-content-between">
+                        <p><span class="movie-year">n/a</span></p>
+                        <p><span class="movie-rating">{{ movie.imdb }}</span></p>
+                    </div>
+                    <div class="d-grid">
+                        <a href="{{ url_for('details', movie_id=movie.id) }}" class="btn btn-danger mb-1">Ver
+                            pelicula</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

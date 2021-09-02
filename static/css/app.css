@@ -1,0 +1,24 @@
+img {
+    width: 100%;
+}
+
+.movie-year {
+    color: #fff;
+    background-color: #9954bb;
+}
+
+.movie-rating {
+    background-color: #eaea26;
+    color: #1a1e21;
+}
+
+.movie-rating, .movie-year {
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.page {
+    border-radius: 2px;
+    font-weight: bold;
+}
+

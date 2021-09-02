@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row row row-cols-2 row-cols-md-4 row-cols-lg-5 gy-3">
+            {% for movie in movies.items %}
+                <div class="col">
+                    <img src="{{ movie.poster }}" alt="{{ movie.title }}" class="img-fluid rounded">
+                    <h3 class="text-truncate h5">{{ movie.title }}</h3>
+                    <div class="d-flex justify-content-between">
+                        <p><span class="movie-year">n/a</span></p>
+                        <p><span class="movie-rating">{{ movie.imdb }}</span></p>
+                    </div>
+                    <div class="d-grid">
+                        <a href="{{ url_for('details', movie_id=movie.id) }}" class="btn btn-danger mb-1">Ver
+                            pelicula</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="paginator d-flex justify-content-between py-5">
+                    {% if movies.has_prev %}
+                        <a href="{{ url_for('index', page=movies.prev_num) }}"
+                           class="previous-page btn btn-primary rounded-1">Previous</a>{% else %}
+                        <a class="previous-page btn btn-primary disabled rounded-1">Previous</a>{% endif %}
+                    {% if page %}
+                        <p>
+                        <span class="bg-secondary text-dark px-1 py-1 page">Page: {{ page }}</span>
+                        </p>
+                    {% endif %}
+                    {% if movies.has_next %}
+                        <a href="{{ url_for('index', page=movies.next_num) }}"
+                           class="previous-page btn btn-info rounded-1">Next</a>{% else %}
+                        <a class="previous-page btn btn-primary disabled rounded-1">Next</a>{% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
